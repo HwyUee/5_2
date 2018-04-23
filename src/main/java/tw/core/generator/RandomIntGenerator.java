@@ -26,4 +26,5 @@ public class RandomIntGenerator {
         }
         return String.join(" ", generated);
     }
+
 }

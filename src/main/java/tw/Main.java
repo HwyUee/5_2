@@ -17,7 +17,7 @@ public class Main {
         GameController gameController = injector.getInstance(GameController.class);
 
         gameController.beginGame();
-        gameController.play(new GuessInputCommand());
+        gameController.play();
 
     }
 }

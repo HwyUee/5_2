@@ -22,7 +22,7 @@ public class Answer {
 
     public static Answer createAnswer(String inputStr) {
         Answer answer = new Answer();
-        List<String> inputList = Arrays.stream(inputStr.split(" ")).collect(Collectors.toList());
+        List inputList =Arrays.stream(inputStr.split(" ")).collect(Collectors.toList());
         answer.setNumList(inputList);
         return answer;
     }
