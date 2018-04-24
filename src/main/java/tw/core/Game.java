@@ -28,6 +28,7 @@ public class Game {
         this.guessResults = new ArrayList();
     }
 
+    //猜结果
     public GuessResult guess(Answer inputAnswer) {
         final int[] existRecord = actualAnswer.check(inputAnswer).getValue();
         String result = String.format("%1$sA%2$sB", existRecord[0], existRecord[1]);
@@ -40,20 +41,20 @@ public class Game {
         return guessResults;
     }
 
+    //判断是否要继续
     public boolean checkCoutinue() {
-        return this.checkStatus() == CONTINUE;
+        return this.checkStatus().equals(CONTINUE);
     }
 
+    //检查状态
     public String checkStatus() {
-        String status;
-        if (guessResults.size() > MAX_TIMES || (guessResults.size() == MAX_TIMES && !checkCorrectGuessResult())) {
-            status = FAIL;
-        } else if (checkCorrectGuessResult()) {
-            status = SUCCESS;
-        } else {
-            status = CONTINUE;
-        }
-        return status;
+//       这里有问题，需要把条件的顺序换一下
+        if (checkCorrectGuessResult())
+            return SUCCESS;
+        if (guessResults.size() >= MAX_TIMES)
+            return FAIL;
+        return CONTINUE;
+
     }
 
     private boolean checkCorrectGuessResult() {
